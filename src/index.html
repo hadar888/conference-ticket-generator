@@ -9,6 +9,10 @@
 </head>
 
 <body>
+  <div>
+    <img alt="logo" src="./assets/images/logo-full.svg">
+    Coding Conf
+  </div>
   <header>
     <h1>
       Your Journey to Coding Conf 2025 Starts Here!
@@ -20,42 +24,56 @@
   </header>
 
   <section>
-    <label>
-      Upload Avatar
-    </label>
-    <input type="file" id="file">
-    Drag and drop or click to upload
-    <img src="assets/images/icon-info.svg" alt="info">
-    Upload your photo (JPG or PNG, max size: 500KB).
+    <div class="form-item">
+      <label>
+        Upload Avatar
+      </label>
+      <div class="drag-and-drop" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <img alt="upload" src="./assets/images/icon-upload.svg">
+        drag and drop or click to upload
+      </div>
+      <div>
+        <img src="assets/images/icon-info.svg" alt="info">
+        Upload your photo (JPG or PNG, max size: 500KB).
+      </div>
+    </div>
 
-    <label>
-      Full Name
-    </label>
-    <input type="text" id="fullName">
+    <div class="form-item">
+      <label>
+        Full Name
+      </label>
+      <input type="text" id="fullName">
+    </div>
 
-    <label>
-      Email Address
-    </label>
-    <input type="email" id="email" placeholder="example@email.com">
-    
-    <label>
-      GitHub Username
-    </label>
-    <input type="text" id="gitHubUsername" placeholder="@yourusername">
+    <div class="form-item">
+      <label>
+        Email Address
+      </label>
+      <input type="email" id="email" placeholder="example@email.com">
+    </div>
 
-    Generate My Ticket
+    <div class="form-item">
+      <label>
+        GitHub Username
+      </label>
+      <input type="text" id="gitHubUsername" placeholder="@yourusername">
+    </div>
+
+    <button>
+      Generate My Ticket
+    </button>
   </section>
 
   <!-- Form ends -->
 
   <!-- Generated tickets starts -->
 
-  Congrats, <!-- Full Name -->! Your ticket is ready.
+  <!-- Congrats, Full Name! Your ticket is ready. -->
 
-  We've emailed your ticket to <!-- Email Address --> and will send updates in the run up to the event.
+  <!-- We've emailed your ticket to Email Address and will send updates in the run up to the event. -->
 
-  Coding Conf
-  Jan 31, 2025 / Austin, TX
+  <!-- Coding Conf -->
+  <!-- Jan 31, 2025 / Austin, TX -->
 
   <!-- Generated tickets ends -->
   <script src="./dist/bundle.js"></script>
