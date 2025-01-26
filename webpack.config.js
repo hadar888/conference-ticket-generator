@@ -1,8 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.ts',
+    entry: './src/index.tsx',
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
+        plugins: [new TsconfigPathsPlugin()]
+    },
 
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -10,9 +16,13 @@ module.exports = {
         publicPath: '/',
         assetModuleFilename: 'assets/images/[name][ext]',
     },
-
     module: {
         rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
             {
                 test: /\.ts$/,
                 use: 'ts-loader',
@@ -36,13 +46,18 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
         }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'src/assets/images', to: 'assets/images' },
+            ],
+        }),
     ],
     devServer: {
         static: path.resolve(__dirname, 'dist'),
         port: 8080,
         open: true,
         hot: true,
-        watchFiles: ['src/**/*.html'],
+        watchFiles: ['src/**/*.html', 'src/**/*.scss'],
     },
 
     mode: 'development',
