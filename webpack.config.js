@@ -7,7 +7,8 @@ module.exports = {
     entry: './src/index.tsx',
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
-        plugins: [new TsconfigPathsPlugin()]
+        plugins: [new TsconfigPathsPlugin()],
+        modules: [path.resolve(__dirname, 'src'), 'node_modules']
     },
 
     output: {
